@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatially Verified Diffusion - Project Page</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #4a6ee0;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+            --text-light: #666666;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .authors {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .venue {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 110, 224, 0.3);
+        }
+
+        /* Teaser Image */
+        .teaser {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+        
+        .teaser img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Section Titles */
+        section {
+            margin-bottom: 60px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+            text-align: justify;
+        }
+
+        /* Hardware Section (Custom Design matching the image) */
+        .hardware-intro {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .hw-card {
+            background: var(--card-bg);
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hw-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            transform: translateY(-5px);
+        }
+
+        .hw-card.highlight {
+            border: 2px solid #8ba4f9;
+            box-shadow: 0 8px 25px rgba(139, 164, 249, 0.15);
+        }
+
+        .hw-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .hw-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hw-tag {
+            background: #4a6ee0;
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .hw-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .hw-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .hw-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .spec-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .hw-desc {
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px dashed #eee;
+            padding-top: 15px;
+        }
+
+        /* Abstract & Method specific styling */
+        .method-img {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        
+        /* Results Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Spatially Verified Diffusion for Lightweight and Safe Exploration in Grass-Dominated Outdoor Environments</h1>
+        <div class="authors">Anonymous Authors [cite: 2]</div>
+        <div class="venue">IROS Submission [cite: 1]</div>
+        <div class="links">
+            <a href="#" class="btn">📄 Paper (PDF)</a>
+            <a href="#" class="btn">💻 Code (GitHub)</a>
+            <a href="#" class="btn">🎥 Video</a>
+        </div>
+    </header>
+
+    <div class="teaser">
+        <img src="fig1.jpg" alt="Experimental platform and simplified execution pipeline" style="background: #eee; min-height: 400px; display: flex; align-items: center; justify-content: center; color: #888; text-align: center;">
+    </div>
+
+    <section id="abstract">
+        <h2>Abstract</h2>
+        <p>Diffusion-based navigation policies can generate diverse short-horizon trajectory hypotheses from visual observations, enabling effective exploration under uncertainty[cite: 3]. However, when deployed in grass-dominant outdoor environments, these generative policies often lack explicit spatial safety regulation, leading to boundary violations under visually ambiguous grass-non-grass transitions[cite: 4].</p>
+        <p>We propose <strong>Spatially Verified Diffusion (SVD)</strong>, a modular framework that augments diffusion-based trajectory generation with an external spatial verification layer[cite: 5]. Instead of modifying or retraining the diffusion model, SVD constructs a transient robot-centric bird's-eye-view (BEV) feasibility space from semantic traversability prediction and camera geometry, and filters candidate trajectories before execution[cite: 6].</p>
+        <p>Extensive real-world experiments across flat and uneven terrains demonstrate that SVD significantly reduces boundary violations and increases minimum clearance compared with an unconstrained diffusion baseline, while maintaining real-time performance (2.8 Hz) on embedded hardware[cite: 11].</p>
+    </section>
+
+    <section id="hardware" style="background: transparent; box-shadow: none; padding: 0;">
+        <h2>硬件系统</h2>
+        <p class="hardware-intro">本系统整合 Traxxas TRX4 车模、Intel D435 深度相机与 Jetson Orin Nano 主控，构建高性能移动机器人平台</p>
+        
+        <div class="hardware-grid">
+            <div class="hw-card">
+                <div class="hw-header">
+                    <div class="hw-title">🚗 Traxxas TRX4</div>
+                    <span class="hw-tag">车模平台</span>
+                </div>
+                <div class="hw-image">
+                    <img src="trx4.png" alt="Traxxas TRX4">
+                </div>
+                <div class="hw-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">型号</div>
+                        <div class="spec-value">82034-4</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">电机</div>
+                        <div class="spec-value">1800KV 无刷</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">舵机</div>
+                        <div class="spec-value">大扭矩升级版</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">特点</div>
+                        <div class="spec-value">全地形适应</div>
+                    </div>
+                </div>
+                <div class="hw-desc">T厂始建于1986年，以大脚车著名，质量可靠。车模具备良好的全地形适应能力，大尺寸设计为后续拓展提供充足空间。</div>
+            </div>
+
+            <div class="hw-card">
+                <div class="hw-header">
+                    <div class="hw-title">📷 Intel RealSense D435</div>
+                    <span class="hw-tag">深度相机</span>
+                </div>
+                <div class="hw-image">
+                    <img src="d435.png" alt="Intel RealSense D435">
+                </div>
+                <div class="hw-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">深度FOV</div>
+                        <div class="spec-value">87°×58°</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">RGB分辨率</div>
+                        <div class="spec-value">1920×1080</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">深度范围</div>
+                        <div class="spec-value">0.2-10m</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">快门</div>
+                        <div class="spec-value">全局快门</div>
+                    </div>
+                </div>
+                <div class="hw-desc">视野宽广，全局快门对强光环境有良好适应效果，适合户外作业。通过USB直接连接Jetson开发板。</div>
+            </div>
+
+            <div class="hw-card highlight">
+                <div class="hw-header">
+                    <div class="hw-title">💻 Jetson Orin Nano</div>
+                    <span class="hw-tag" style="background: #5d3fd3;">主控板</span>
+                </div>
+                <div class="hw-image">
+                    <img src="jetson.png" alt="Jetson Orin Nano">
+                </div>
+                <div class="hw-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">AI算力</div>
+                        <div class="spec-value">40 TOPS</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">GPU</div>
+                        <div class="spec-value">1024 CUDA</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">内存</div>
+                        <div class="spec-value">8GB LPDDR5</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">功耗</div>
+                        <div class="spec-value">7-15W</div>
+                    </div>
+                </div>
+                <div class="hw-desc">NVIDIA边缘AI计算平台，支持TensorRT加速，40PIN扩展接口，通过I2C连接PWM生成模块控制舵机。</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="method">
+        <h2>Methodology</h2>
+        <p>At each control step, the robot receives an RGB observation[cite: 110]. A diffusion-based navigation policy generates N candidate short-horizon trajectories conditioned on recent observations[cite: 111]. SVD constructs a local feasibility representation from semantic traversability perception and rejects candidate trajectories that violate explicit spatial constraints in BEV space[cite: 113].</p>
+        <img src="fig2.jpg" alt="System Architecture" class="method-img" style="background: #eee; height: 300px; display: flex; align-items: center; justify-content: center; color: #888;">
+        <p>The overall pipeline is implemented in a ROS 2 closed loop to support real robot deployment and profiling[cite: 108]. A YOLO-style segmentation network trained on a self-collected dataset (4k+ labeled images) balances accuracy and inference latency, which is critical for real-time navigation loops on embedded hardware[cite: 128].</p>
+    </section>
+
+    <section id="results">
+        <h2>Quantitative Results</h2>
+        <p>All statistics are computed over 50 independent trials conducted across mixed outdoor environments[cite: 280]. As shown below, SVD reduces the boundary violation rate (BVR) from 26% to 8%, a relative reduction of approximately 69% under identical deployment conditions[cite: 281].</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Violations/50 [cite: 246]</th>
+                    <th>BVR [cite: 246]</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Unconstrained Diffusion [cite: 247]</td>
+                    <td>13/50 [cite: 247]</td>
+                    <td>0.26 [cite: 247]</td>
+                </tr>
+                <tr>
+                    <td><strong>Spatially Verified Diffusion (SVD) [cite: 247]</strong></td>
+                    <td><strong>4/50 [cite: 247]</strong></td>
+                    <td><strong>0.08 [cite: 247]</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>
