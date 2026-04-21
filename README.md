@@ -36,5 +36,5 @@ Our experimental platform is designed for high-performance mobile robotics, cons
 
 ### Clone the Repository
 ```bash
-git clone [https://github.com/your-username/SVD-Nav.git](https://github.com/your-username/SVD-Nav.git)
+git clone https://github.com/s-team-git/SVD-Nav.git
 cd SVD-Nav
